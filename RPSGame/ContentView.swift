@@ -45,28 +45,19 @@ struct ContentView: View {
     func battle() {
         handTwo = Int.random(in: 0..<3)
         
-        if handOne == handTwo {
-            status = "あいこ"
-        } else if handOne == 0 {
-            if handTwo == 1 {
-                status = "勝ち"
-            } else {
-                status = "負け"
-            }
-        } else if handOne == 1 {
-            if handTwo == 2 {
-                status = "勝ち"
-            } else {
-                status = "負け"
-            }
-        } else if handOne == 2 {
-            if handTwo == 0 {
-                status = "勝ち"
-            } else {
-                status = "負け"
-            }
-        }
+//        handOne - handTwoが「1 or -2」はPlayer1の勝ち、「0」はあいこ、「-1 ot 2」はPlayer2の勝ち
+        let result: Int = handTwo - handOne
         
+        switch result {
+        case 0:
+            status = "あいこ"
+        case -2, 1:
+            status = "勝ち"
+        case -1, 2:
+            status = "負け"
+        default:
+            break
+        }
     }
 }
 
